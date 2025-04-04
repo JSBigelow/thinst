@@ -25,4 +25,4 @@ classifiers = [
 ]
 
 [project.urls]
-Repository = 'https://github.com/JSBigelow/CT_Aider'
+Repository = 'https://github.com/JSBigelow/thinst'
