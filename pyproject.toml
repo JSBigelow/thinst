@@ -13,8 +13,8 @@ dependencies = [
 
 requires-python = '>= 3.8'
 
-authors = [{name = "Jonathan Syme", email = "jsyme@bigelow.org"}]
-maintainers = [{name = "Jonathan Syme", email = "jsyme@bigelow.org"}]
+authors = [{name = 'Jonathan Syme', email = 'jsyme@bigelow.org'}]
+maintainers = [{name = 'Jonathan Syme', email = 'jsyme@bigelow.org'}]
 description = 'Thin data spatiotemporally'
 readme = 'README.md'
 license = 'MIT'

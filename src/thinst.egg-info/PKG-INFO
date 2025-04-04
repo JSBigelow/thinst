@@ -1,3 +1,23 @@
+Metadata-Version: 2.4
+Name: thinst
+Version: 0.0.1
+Summary: Thin data spatiotemporally
+Author-email: Jonathan Syme <jsyme@bigelow.org>
+Maintainer-email: Jonathan Syme <jsyme@bigelow.org>
+License-Expression: MIT
+Project-URL: Repository, https://github.com/JSBigelow/thinst
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy>2.0.0
+Requires-Dist: pandas>2.0.0
+Requires-Dist: pytz>2024.1
+Requires-Dist: scipy>1.0.0
+Requires-Dist: shapely>2.0.0
+Requires-Dist: matplotlib>3.0.0
+Dynamic: license-file
+
 # thinst: Thin data spatiotemporally
 
 ## Description

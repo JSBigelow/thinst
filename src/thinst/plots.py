@@ -20,7 +20,7 @@ def spatial(
         colour: str = '#4d4d4d'):
     """Spatially plot the points with the spatial threshold illustrated by a pale circle around each point."""
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(16, 16))
 
     points = _get_points(df=df, points=points)
     xs, ys = _get_xs_ys(points=points)
@@ -32,7 +32,6 @@ def spatial(
     ax.set_xlim(min(xs) - sp_threshold, max(xs) + sp_threshold)
     ax.set_ylim(min(ys) - sp_threshold, max(ys) + sp_threshold)
     ax.set_aspect('equal', adjustable='box')
-    fig.show()
 
 
 def spatial_thinned(
@@ -44,7 +43,7 @@ def spatial_thinned(
     """Spatially plot the points that were kept (blue) and those that were removed (red) after thinning with the spatial
      threshold illustrated by a pale circle around each point."""
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(16, 16))
 
     points_kept = _get_points(df=df_kept, points=points_kept)
     xs_kept, ys_kept = _get_xs_ys(points=points_kept)
@@ -57,13 +56,12 @@ def spatial_thinned(
     xs_removed, ys_removed = _get_xs_ys(points=points_removed)
     for x, y in zip(xs_removed, ys_removed):
         ax.add_patch(plt.Circle((x, y), sp_threshold / 2,
-                                facecolor='#a30046', alpha=0.2, edgecolor='none', zorder=1))
-    ax.scatter(xs_removed, ys_removed, s=2, color='#a30046')
+                                facecolor='#fdbe57', alpha=0.2, edgecolor='none', zorder=1))
+    ax.scatter(xs_removed, ys_removed, s=2, color='#fdbe57')
 
     ax.set_xlim(min(xs_kept + xs_removed) - sp_threshold, max(xs_kept + xs_removed) + sp_threshold)
     ax.set_ylim(min(ys_kept + ys_removed) - sp_threshold, max(ys_kept + ys_removed) + sp_threshold)
     ax.set_aspect('equal', adjustable='box')
-    fig.show()
 
 
 unit_codes = {
@@ -81,7 +79,7 @@ def temporal(
         colour: str = '#4d4d4d'):
     """Temporally plot the points with the temporal threshold illustrated by a pale line centred around each point."""
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(16, 16))
 
     datetimes = _get_datetimes(df=df, datetimes=datetimes)
     units = _get_zs(datetimes=datetimes, tm_unit=tm_unit)
@@ -112,7 +110,6 @@ def temporal(
     ax.set_ylim(-1, len(units) + 1)
     ax.tick_params(axis='y', which='both', left=False, labelleft=False)
     fig.set_tight_layout(True)
-    fig.show()
 
 
 def temporal_thinned(
@@ -125,14 +122,14 @@ def temporal_thinned(
     """Temporally plot the points that were kept (blue) and those that were removed (red) after thinning with the
      temporal threshold illustrated by a pale line centred around each point."""
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(16, 16))
 
     datetimes_kept = _get_datetimes(df=df_kept, datetimes=datetimes_kept)
     datetimes_removed = _get_datetimes(df=df_removed, datetimes=datetimes_removed)
     units_kept = _get_zs(datetimes=datetimes_kept, tm_unit=tm_unit)
     units_removed = _get_zs(datetimes=datetimes_removed, tm_unit=tm_unit)
     units = pd.concat([pd.DataFrame({'units': units_kept, 'colours': '#0055a3'}),
-                       pd.DataFrame({'units': units_removed, 'colours': '#a30046'})])
+                       pd.DataFrame({'units': units_removed, 'colours': '#fdbe57'})])
     units = units.sort_values('units').reset_index(drop=True)
 
     for index, unit, colour in zip(units.index, units['units'], units['colours']):
@@ -154,7 +151,6 @@ def temporal_thinned(
     ax.set_xlim(min(units['units']) - tm_threshold, max(units['units']) + tm_threshold)
     ax.set_ylim(-1, len(units) + 1)
     ax.tick_params(axis='y', which='both', left=False, labelleft=False)
-    fig.show()
 
 
 def _cylinder(
@@ -220,7 +216,6 @@ def spatiotemporal(
     ax.yaxis.pane.fill = False
     ax.zaxis.pane.fill = False
     ax.set_aspect('equalxy', adjustable='box')
-    fig.show()
 
 
 def spatiotemporal_thinned(
@@ -256,7 +251,7 @@ def spatiotemporal_thinned(
     units_removed = _get_zs(datetimes=datetimes_removed, tm_unit=tm_unit)
     for x, y, z in zip(xs_removed, ys_removed, units_removed):
         _cylinder(ax=ax, x=x, y=y, z=z, radius=sp_threshold / 2, half_height=tm_threshold / 2,
-                  no_edges=no_edges, colour='#a30046')
+                  no_edges=no_edges, colour='#fdbe57')
 
     ax.set_xlim(min(xs_kept + xs_removed) - sp_threshold, max(xs_kept + xs_removed) + sp_threshold)
     ax.set_ylim(min(ys_kept + ys_removed) - sp_threshold, max(ys_kept + ys_removed) + sp_threshold)
@@ -269,4 +264,4 @@ def spatiotemporal_thinned(
     ax.yaxis.pane.fill = False
     ax.zaxis.pane.fill = False
     ax.set_aspect('equalxy', adjustable='box')
-    fig.show()
+
