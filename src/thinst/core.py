@@ -93,7 +93,6 @@ def thinst(
     # get the close pairs
     if (isinstance(sp_threshold, int | float)  # if both a spatial...
             and isinstance(tm_threshold, int | float)):  # ...and temporal threshold are specified...
-        print('Conducting spatiotemporal thinning...')
         points = get_points(df=df, points=points)  # get points
         datetimes = get_datetimes(df=df, datetimes=datetimes)  # get datetimes
         pairs = get_sptm_pairs(  # get spatiotemporal pairs
@@ -105,7 +104,6 @@ def thinst(
 
     elif (isinstance(sp_threshold, int | float)  # if only a spatial threshold is specified...
           and not isinstance(tm_threshold, int | float)):
-        print('Conducting spatial thinning...')
         points = get_points(df=df, points=points)  # get points
         pairs = get_sp_pairs(  # get spatial pairs
             points=points,
@@ -113,7 +111,6 @@ def thinst(
 
     elif (isinstance(tm_threshold, int | float)  # if only a temporal threshold is specified...
           and not isinstance(sp_threshold, int | float)):
-        print('Conducting temporal thinning...')
         datetimes = get_datetimes(df=df, datetimes=datetimes)  # get datetimes
         pairs = get_tm_pairs(  # get temporal pairs
             datetimes=datetimes,
@@ -136,7 +133,6 @@ def thinst(
             ids=ids)
     else:  # else if there are no close pairs (i.e., if thinning is not required)...
         removed = df if isinstance(df, pd.DataFrame) else points, datetimes, ids  # ...return what was input
-    print('Thinning complete.')
     return removed
 
 
