@@ -1,9 +1,9 @@
 [project]
 name = 'thinst'
-version = '0.0.2'
+version = '0.0.6'
 
 dependencies = [
-    'numpy > 2.0.0',
+    'numpy >= 1.26.4',
     'pandas > 2.0.0',
     'pytz > 2024.1',
     'scipy > 1.0.0',

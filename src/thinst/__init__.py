@@ -1,4 +1,3 @@
-__all__ = ['thinst', 'plots']
+__all__ = ['thinst']
 
 from .core import thinst
-from .plots import *
